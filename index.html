@@ -4,32 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="Assets/css/reset.css"
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="Assets/css/reset.css" />
     <link rel="stylesheet" href="Assets/css/style.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Code Quiz</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Question 1</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
+    <div class="score-board">
+      <div class="high-scores">
+        <h1>High Scores</h1>
+      </div>
+      <div class="timer">
+        <h1>Time: </h1>
       </div>
     </div>
-    <script src="script.js"></script>
+    <div class="container">
+      <div id="question-container" class="hide">
+        <div id="question">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="answer btn">Answer 1</button>
+          <button class="answer btn">Answer 2</button>
+          <button class="answer btn">Answer 3</button>
+          <button class="answer btn">Answer 4</button>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Start</button>
+        <button id="play-again-btn" class="play-again-btn btn hide">Play Again</button>
+      </div>
+    </div>
   </body>
+  <script src="Assets/js/script.js"></script>
 </html>
+    

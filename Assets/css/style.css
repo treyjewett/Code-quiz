@@ -1,141 +1,112 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-html,
-body,
-.wrapper {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 body {
-  font-family: sans-serif;
-  background-color: #f9fbfd;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
 }
 
-.wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+.score-board {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 10px;
+  width: 50vw;
+  height: 10vh;
+  justify-content: space-between;
 }
 
-header {
+.high-scores {
+  padding: 3px;
+  margin: 0;
+  height: 40px;
+}
+
+.high-scores h1 {
+  font-size: 20px;
+  color: blue;
+}
+
+.timer {
+  padding: 3px;
+  text-align: right;
+  height: 40px;
+}
+
+.timer h1 {
+  font-size: 20px;
+  color: blue;
+}
+
+.container {
+  width: 800px;
+  max-width: 80%;
+  max-height: 50%;
+}
+
+#question {
+  font-size: 50px;
   text-align: center;
-  padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  flex-wrap: wrap;
 }
 
-.card {
-  background-color: hsl(0, 0%, 100%);
-  border-radius: 5px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
-  font-size: 18px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
-}
-
-.card h2 {
-  text-align: center;
-}
-
-.card-header::after {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-body {
-  min-height: 100px;
-}
-
-.card-footer {
-  text-align: center;
-}
-
-.card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 10px;
+  padding-top: 20px;
 }
 
 .btn {
-  border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
-  color: hsl(0, 0%, 100%);
-  display: inline-block;
-  font-size: 22px;
-  line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
-  text-align: center;
-  cursor: pointer;
+  background-color: lightblue;
+  border: 2px solid blue;
+  border-radius: 5px;
+  padding: 5px, 10px;
+  color: black;
+  outline: none;
 }
 
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
+.btn:hover {
+  border-color: black;
 }
 
-.float-right {
-  float: right;
+#answer-buttons {
+  height: 200px;
 }
 
-#password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
+.btn.correct {
+  /* Display 'Correct', timer unaffected in JS */
+  /* Should be faint text (lightgrey?) and appear under the question container. */
 }
 
-@media (max-width: 690px) {
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
-  }
-
-  #password {
-    font-size: 1rem;
-  }
+.btn.wrong {
+  /* Display 'Wrong', timer -10sec in JS */
+  /* Should be faint text (lightgrey?) and appear under the question container. */
 }
 
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;
-  }
+.start-btn {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.answer {
+  font-size: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
 }
