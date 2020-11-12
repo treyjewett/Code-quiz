@@ -2,37 +2,47 @@ var startButton = document.getElementById('start-btn');
 var questionContainerEl = document.getElementById('question-container');
 var questionEl = document.getElementById('question');
 var answerButtonsEl = document.getElementById('answer-buttons');
+//var answer1 = document.getElementsByClassName(;
 var currentQuestionIndex;
 
 startButton.addEventListener('click', startGame);
 
-function shuffledQuestions(question) {
-    for (var i; i < questions.length; i++) {
-        return Math.floor(Math.random() * question.length);
+function shuffleArray(array) {
+    for (var i; i < array.length; i++) {
+        var rand = Math.floor(Math.random() * array.length);
+        var temp = array[i];
+        array[i] = array[rand];
+        array[rand] = temp;
     }
+    return array;
 }
 
 function startGame() {
     startButton.classList.add('hide');
-    shuffledQuestions();
+    shuffleArray(array);
     currentQuestionIndex = 0;
     questionContainerEl.classList.remove('hide');
     setNextQuestion();
 }
 
 function setNextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    showQuestion(array[currentQuestionIndex]);
+    currentQuestionIndex++;
 }
 
-function showQuestion(question) {
-    questionEl.innerText = questions.question;
+function showQuestion(array) {
+    questionEl.innerText = array.question;
+    console.log(answerButtonsEl);
+    console.log("------------------------------------------------------------------------");
+    console.log(answerButtonsEl.answer-btn-1);
+    answerButtonsEl[0] = array.answers[0].text;
 }
 
 function selectAnswer() {
     
 }
 
-var questions = [
+var array = [
     {
         question: "What is the format used for storing and transporting data?",
         answers: [
