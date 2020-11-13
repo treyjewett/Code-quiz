@@ -74,27 +74,23 @@ body {
 }
 
 .btn:hover {
-  border-color: black;
+  border-color: red;
 }
 
 #answer-buttons {
   height: 200px;
 }
 
-.btn.correct {
-  /* Display 'Correct', timer unaffected in JS */
-  /* Should be faint text (lightgrey?) and appear under the question container. */
-}
-
-.btn.wrong {
-  /* Display 'Wrong', timer -10sec in JS */
-  /* Should be faint text (lightgrey?) and appear under the question container. */
-}
-
 .start-btn {
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 20px;
+}
+
+p {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .answer {
@@ -109,4 +105,22 @@ body {
 
 .hide {
   display: none;
+}
+
+.check {
+  font-style: italic;
+  border-top: 2px solid grey;
+  margin-top: 3px;
+}
+
+#correct {
+  font-size: 25px;
+  padding: 5px;
+  color: green;
+}
+
+#wrong {
+  font-size: 25px;
+  padding: 5px;
+  color: red;
 }

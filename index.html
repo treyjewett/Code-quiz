@@ -9,30 +9,36 @@
     <link rel="stylesheet" href="Assets/css/style.css" />
   </head>
   <body>
+    
     <div class="score-board">
       <div class="high-scores">
         <h1>High Scores</h1>
       </div>
       <div class="timer">
-        <h1>Time: </h1>
+        <h1 id="timer">Time: </h1>
       </div>
     </div>
     <div class="container">
       <div id="question-container" class="hide">
         <div id="question">Question</div>
         <div id="answer-buttons" class="btn-grid">
-          <button class="answer-btn-1 btn">Answer 1</button>
-          <button class="answer-btn-2 btn">Answer 2</button>
-          <button class="answer-btn-3 btn">Answer 3</button>
-          <button class="answer-btn-4 btn">Answer 4</button>
         </div>
       </div>
       <div class="controls">
         <button id="start-btn" class="start-btn btn">Start</button>
         <button id="play-again-btn" class="play-again-btn btn hide">Play Again</button>
       </div>
+      <p id="description">
+        Welcome to the code quiz! Do your best to answer all of the questions before the time runs out! You will have 1 minute to answer all 7 questions. 
+        Be careful, a wrong answer will dock your remaining time! Good Luck!
+      </p>
+      </div>
+    </div>
+    <div class="check hide">
+      <p id="correct">Correct!</p>
+      <p id="wrong">Wrong!</p>
     </div>
   </body>
   <script src="Assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </html>
-    
