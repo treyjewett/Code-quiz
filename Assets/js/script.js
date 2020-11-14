@@ -13,12 +13,12 @@ startButton.addEventListener('click', startGame);
 //Shuffle the questions prior to the quiz starting using a switching algorithm.
 function shuffleArray(passedArray) {
     console.log("this is my passedArray: " + passedArray[1].questionText);
-    for (var i; i < passedArray.length; i++) {
+    for (var i = 0; i < passedArray.length; i++) {
         var rand = Math.floor(Math.random() * passedArray.length);
         var temp = passedArray[i];
         passedArray[i] = passedArray[rand];
         passedArray[rand] = temp;
-        console.log("testing" + passedArray[i].questionText);
+        console.log("testing: " + passedArray[i].questionText);
     }
     console.log("this is my passedArray: " + passedArray[1].questionText);
     return passedArray;
@@ -42,7 +42,7 @@ function startGame() {
     startButton.classList.add('hide');
     description.classList.add('hide')
     shuffledQuestions = shuffleArray(questionArray);
-    console.log("this is my questionArray: " + shuffleArray[1].questionText);
+    console.log("this is my questionArray: " + shuffledQuestions[1].questionText);
     currentQuestionIndex = 0;
     questionContainerEl.classList.remove('hide');
     initializeQuestion();
@@ -57,7 +57,7 @@ function initializeQuestion() {
     // endQuiz
 }
 
-function showQuestion(question) {
+function showQuestion(shuffledQuestions) {
     // Modify the "question" element in the html to show corresponding question in the questionArray.
     questionEl.textContent = question.questionText;
     // Populate each button with corresponding text and add an event listener for when the user selects an answer choice
