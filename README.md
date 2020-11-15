@@ -11,7 +11,7 @@ This is a short quiz to see if you know your HTML / CSS / JavaScript basics. At 
 <img src="Assets\images\code-quiz webpage.png" alt="Code Quiz">
 </p>
 
-<a href="" target="_blank">Click here to view the Quiz!</a>
+<a href="https://treyjewett.github.io/Code-quiz/" target="_blank">Click here to view the Quiz!</a>
 
 ## Code Utilized
 
