@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="Assets/css/style.css" />
   </head>
   <body>
-    <div class="score-board">
+    <div class="score-board" id="leaders">
       <div class="high-scores">
-        <h1>High Scores</h1>
+        <h1 id="high-scores">High Scores</h1>
+        <ul id="leaders">
+        </ul>
       </div>
       <div class="timer">
         <h1 id="timer">Time: </h1>
@@ -27,13 +29,17 @@
         <button id="start-btn" class="start-btn btn">Start</button>
       </div>
       <p id="description">
-        Welcome to the code quiz! Do your best to answer all of the questions before the time runs out! You will have 1 minute to answer all 7 questions. 
+        Welcome to the code quiz! Do your best to answer all of the questions before the time runs out! You will have 60 seconds to answer all 7 questions. 
         Be careful, a wrong answer will dock your remaining time! Good Luck!
       </p>
+      </div>
     </div>
-    <div class="quiz-end">
+    <div class="score hide" id="score">
       <div id="user-score">
-        
+        <form action="" id="form" onsubmit="sConsole(event)">
+          <input type="text" name="data" id="initials">
+          <button id="submit">Submit</button>
+        </form>
       </div>
     </div>
   </body>
