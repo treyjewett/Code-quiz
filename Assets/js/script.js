@@ -110,14 +110,14 @@ function showQuestion(currentQuestionObject) {
 function selectAnswer(isCorrect) {
     if (isCorrect == true) {
         score += 10;
-        alert('Correct! You get 10 points!')
+        alert('Correct! You get 10 points!');
     } else {
         sec -= 10;
-        alert('Wrong! you lose 10 seconds!')
+        alert('Wrong! you lose 10 seconds!');
     }
     currentQuestionIndex++;
     if (currentQuestionIndex == shuffled.length) {
-        alert("The quiz is now over")
+        alert("The quiz is now over");
         endQuiz();
     } else {
         showQuestion(shuffled[currentQuestionIndex]);
@@ -127,7 +127,7 @@ function selectAnswer(isCorrect) {
 // Once time has expired or all of the questions have been answered, hide all HTML elements except the prompt to enter initials.
 // Also set the sec to zero so the timer doesn't keep running in the background.
 function endQuiz() {
-    sec = 0
+    sec = 0;
     questionContainerEl.classList.add('hide');
     scores.classList.remove('hide');
     leaderBoardButton.classList.remove('hide');
@@ -135,12 +135,12 @@ function endQuiz() {
 }
 
 // Create global empty string and empty array to populate within later functions.
-var initialsToAdd = ""
+var initialsToAdd = "";
 var listOfScores = [];
 
 // Make the "view high scores" button clickable.
 submit.addEventListener('click', function (event) {
-    event.preventDefault()
+    event.preventDefault();
     showLeaderboard();
 })
 
@@ -156,41 +156,41 @@ function addScores(initials, score) {
 
 // This starts the game over is the user clicks "play again".
 function startAgain() {
-    sec = 60
-    score = 0
-    leaderboard.classList.add('hide')
+    sec = 60;
+    score = 0;
+    leaderboard.classList.add('hide');
     startGame();
 }
 
 // Makes the "play again" button clickable.
 playAgain.addEventListener('click', function () {
-    startAgain()
+    startAgain();
 })
 
 // Clears local storage if the user clicks "clear Scores".
 function clearLeaderboard() {
     localStorage.clear();
-    leaderBoardList.innerHTML = ""
+    leaderBoardList.innerHTML = "";
 }
 
 // Makes the "clear scores" button clickable.
 clearScores.addEventListener('click', function () {
-    clearLeaderboard()
+    clearLeaderboard();
 })
 
 // This hides all of the non-essential HTML elements and also populates the leaderboard with initials and scores from local storage.
 function showLeaderboard() {
-    initialsToAdd = userInitials.value
-    addScores(initialsToAdd, score)
+    initialsToAdd = userInitials.value;
+    addScores(initialsToAdd, score);
     scores.classList.add('hide');
     leaderboard.classList.remove('hide');
-    leaderBoardList.innerHTML = ""
+    leaderBoardList.innerHTML = "";
     var displayScores = JSON.parse(localStorage.getItem("listOfScores"));
     for (i = 0; i < displayScores.length; i++) {
         let newLeader = document.createElement("li");
-        newLeader.setAttribute("class", "listOfLeaders")
-        newLeader.append(document.createTextNode(`${displayScores[i].initials} ----- ${displayScores[i].score}`))
-        leaderBoardList.append(newLeader)
+        newLeader.setAttribute("class", "listOfLeaders");
+        newLeader.append(document.createTextNode(`${displayScores[i].initials} ----- ${displayScores[i].score}`));
+        leaderBoardList.append(newLeader);
     }
 }
 
