@@ -1,3 +1,4 @@
+// Set global variables
 var scores = document.getElementById('score');
 var clock = document.getElementById('timer');
 var userScore = document.getElementById('user-score');
@@ -43,23 +44,28 @@ function timer() {
     }, 1000);
 }
 
+// Create an empty array to append the shuffled order of questions into.
 var shuffled = [];
 
 // Create a function that starts the game.
+// Start timer, hide non-relavent html elements, and initialize random questions.
 function startGame() {
     timer();
     startButton.classList.add('hide');
     description.classList.add('hide');
+    leaderBoardButton.classList.add('hide');
     shuffled = shuffleArray(questionArray);
     currentQuestionIndex = 0;
     questionContainerEl.classList.remove('hide');
     initializeQuestion(shuffled);
 }
 
+// Show the question once they have been randomized.
 function initializeQuestion(shuffledQuestions) {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
+// This function is for when the game ends and the leaderboard is shown. Otherwise, the page would show an error and reset, losing user score.
 function clearAnswers() {
     answerButtonsEl.innerHTML = "";
 }
@@ -100,6 +106,7 @@ function showQuestion(currentQuestionObject) {
     })
 }
 
+// Check to see if the user satatement is correct and to see if they have answered all of the questions.
 function selectAnswer(isCorrect) {
     if (isCorrect == true) {
         score += 10;
@@ -113,25 +120,31 @@ function selectAnswer(isCorrect) {
         alert("The quiz is now over")
         endQuiz();
     } else {
-    showQuestion(shuffled[currentQuestionIndex]);
+        showQuestion(shuffled[currentQuestionIndex]);
     }
 }
 
+// Once time has expired or all of the questions have been answered, hide all HTML elements except the prompt to enter initials.
+// Also set the sec to zero so the timer doesn't keep running in the background.
 function endQuiz() {
     sec = 0
     questionContainerEl.classList.add('hide');
     scores.classList.remove('hide');
+    leaderBoardButton.classList.remove('hide');
     userScore.textContent = 'You Scored ' + score + ' Points!';
 }
 
+// Create global empty string and empty array to populate within later functions.
 var initialsToAdd = ""
 var listOfScores = [];
 
-    submit.addEventListener('click', function(event) {
-        event.preventDefault()
-        showLeaderboard();
-    })
+// Make the "view high scores" button clickable.
+submit.addEventListener('click', function (event) {
+    event.preventDefault()
+    showLeaderboard();
+})
 
+// Push the current user score to local storage to show later.
 function addScores(initials, score) {
     var newScore = {
         initials: initials,
@@ -141,6 +154,7 @@ function addScores(initials, score) {
     localStorage.setItem('listOfScores', JSON.stringify(listOfScores));
 }
 
+// This starts the game over is the user clicks "play again".
 function startAgain() {
     sec = 60
     score = 0
@@ -148,19 +162,23 @@ function startAgain() {
     startGame();
 }
 
+// Makes the "play again" button clickable.
 playAgain.addEventListener('click', function () {
     startAgain()
 })
 
+// Clears local storage if the user clicks "clear Scores".
 function clearLeaderboard() {
     localStorage.clear();
     leaderBoardList.innerHTML = ""
 }
 
-clearScores.addEventListener('click', function() {
+// Makes the "clear scores" button clickable.
+clearScores.addEventListener('click', function () {
     clearLeaderboard()
 })
 
+// This hides all of the non-essential HTML elements and also populates the leaderboard with initials and scores from local storage.
 function showLeaderboard() {
     initialsToAdd = userInitials.value
     addScores(initialsToAdd, score)
@@ -171,14 +189,17 @@ function showLeaderboard() {
     for (i = 0; i < displayScores.length; i++) {
         let newLeader = document.createElement("li");
         newLeader.setAttribute("class", "listOfLeaders")
-        newLeader.append(document.createTextNode(`${displayScores[i].initials} -------------- ${displayScores[i].score}`))
+        newLeader.append(document.createTextNode(`${displayScores[i].initials} ----- ${displayScores[i].score}`))
         leaderBoardList.append(newLeader)
-        }
+    }
 }
 
-leaderBoardButton.addEventListener('click', function() {
+// Makes the "view high scores" text clickable.
+leaderBoardButton.addEventListener('click', function () {
     startButton.classList.add('hide');
     description.classList.add('hide');
+    questionContainerEl.classList.add('hide');
+    scores.classList.add('hide');
     showLeaderboard();
 });
 

@@ -9,9 +9,13 @@ This is a short quiz to see if you know your HTML / CSS / JavaScript basics. At 
 
 <p align="center">
 <img src="Assets\images\code-quiz webpage.png" alt="Code Quiz">
+<img src="Assets\images\question-example.jpg" alt="Question Example">
+<img src="Assets\images\end-quiz-example.jpg" alt="End of Quiz">
+<img src="Assets\images\Leaderboard-example.jpg" alt="Leaderboard Example">
 </p>
 
 <a href="https://treyjewett.github.io/Code-quiz/" target="_blank">Click here to view the Quiz!</a>
+
 
 ## Code Utilized
 
@@ -24,8 +28,13 @@ When the Quiz is loaded:
 - Once "start" is clicked, the user is presented with a question and 4 answer choices.
 - If the user selects the correct option, 10 points are added to their score.
 - If the user selects the incorrect option, 10 seconds are deducted from the time limit.
-- If the time runs out, a prompt is given to the user stating that they are out of time and they are re-directed to enter their initials to record their score.
+- If the time runs out, an alert is given to the user stating that the quiz is over and they are re-directed to enter their initials to record their score.
 - If the user answers all of the questions, the user is then promped to enter their initials to record their score.
+- Clicking the "view High Scores" button will bring the user to the leaderboard page where they can see previous scores.
+- If the user wants to reset the recorded scores, clicking the "Clear Scores" button will erase local memory and refresh the scores board.
+- If the user would like to play again, simply press the "Play again" button to re-start the quiz from question 1.
+- The "view High Scores" button is not viewable during the quiz to reduce distractions.
+
 
 ## Lessons Learned
 

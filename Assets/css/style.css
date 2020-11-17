@@ -3,7 +3,6 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-
 body {
   padding: 0;
   display: flex;
@@ -18,7 +17,7 @@ body {
   flex-direction: row;
   padding: 20px 10px;
   width: 50vw;
-  height: 10vh;
+  height: 7vh;
   justify-content: space-between;
 }
 
@@ -28,9 +27,13 @@ body {
   height: 40px;
 }
 
-.high-scores h1 {
+#high-scores {
+  background-color: white;
   font-size: 20px;
+  height: 40px;
   color: blue;
+  border: none;
+  font-weight: bold;
 }
 
 .timer {
@@ -64,6 +67,7 @@ body {
   padding-top: 20px;
 }
 
+/* This modifies all of the clickable buttons so they are obvious and easy to find. */
 .btn {
   background-color: lightblue;
   border: 2px solid blue;
@@ -73,6 +77,7 @@ body {
   outline: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .btn text {
@@ -101,13 +106,10 @@ body {
 }
 
 p {
+  padding-top: 30px;
   text-align: center;
   font-size: 25px;
   margin-top: 5px;
-}
-
-.answer {
-  font-size: 20px;
 }
 
 .controls {
@@ -120,8 +122,46 @@ p {
   display: none;
 }
 
-.check {
-  font-style: italic;
-  border-top: 2px solid grey;
-  margin-top: 3px;
+.score {
+  align-items: center;
+}
+
+.score h1 {
+  color: blue;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.score form {
+  align-items: center;
+}
+
+#leaderboard {
+  text-align: center;
+  justify-content: space-between;
+}
+
+#leaderboard h1 {
+  text-align: center;
+  font-size: 40px;
+  color: blue;
+  border-bottom: 5px solid gray;
+  padding-bottom: 10px;
+}
+
+#leaderboard button {
+  font-size: 20px;
+  height: 50px;
+  width: 200px;
+  height: 100px;
+  margin: 0 60px;
+}
+
+#leaders {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 15px;
+  padding-bottom: 30px;
 }
