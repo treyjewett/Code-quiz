@@ -125,15 +125,3 @@ p {
   border-top: 2px solid grey;
   margin-top: 3px;
 }
-
-#correct {
-  font-size: 25px;
-  padding: 5px;
-  color: green;
-}
-
-#wrong {
-  font-size: 25px;
-  padding: 5px;
-  color: red;
-}

@@ -11,6 +11,8 @@ var answerButtonsEl = document.getElementById('answer-buttons');
 var submit = document.getElementById('submit');
 var userInitials = document.getElementById('initials');
 var playAgain = document.getElementById('play-again');
+var leaderBoardList = document.getElementById('leaders');
+var leaderBoardButton = document.getElementById('high-scores');
 var currentQuestionIndex;
 var sec = 60;
 var score = 0;
@@ -35,7 +37,7 @@ function timer() {
         document.getElementById('timer').textContent = 'Time: ' + sec;
         if (sec <= 0) {
             clearInterval(timer);
-            quizTimeout();
+            endQuiz()
         }
         sec--;
     }, 1000);
@@ -47,7 +49,7 @@ var shuffled = [];
 function startGame() {
     timer();
     startButton.classList.add('hide');
-    description.classList.add('hide')
+    description.classList.add('hide');
     shuffled = shuffleArray(questionArray);
     currentQuestionIndex = 0;
     questionContainerEl.classList.remove('hide');
@@ -108,42 +110,77 @@ function selectAnswer(isCorrect) {
     }
     currentQuestionIndex++;
     if (currentQuestionIndex == shuffled.length) {
+        alert("The quiz is now over")
         endQuiz();
-    }
+    } else {
     showQuestion(shuffled[currentQuestionIndex]);
-}
-
-function quizTimeout() {
-    alert('You have run out of time.');
-    endQuiz();
+    }
 }
 
 function endQuiz() {
-    alert('The quiz is over');
-    timer(clearInterval(timer));
+    sec = 0
     questionContainerEl.classList.add('hide');
     scores.classList.remove('hide');
     userScore.textContent = 'You Scored ' + score + ' Points!';
-    submit.addEventListener('click', function() {
-        showLeaderboard();
-        // userInitials = textInput.value(text);
-        // var jsonInitials = JSON.stringify(userInitials);
-        // var jsonScore = JSON.stringify(score);
-        // localStorage.setItem({user: jsonInitials, score:jsonScore});
-    });
 }
 
+var initialsToAdd = ""
+var listOfScores = [];
+
+    submit.addEventListener('click', function(event) {
+        event.preventDefault()
+        showLeaderboard();
+    })
+
+function addScores(initials, score) {
+    var newScore = {
+        initials: initials,
+        score: score
+    }
+    listOfScores.push(newScore);
+    localStorage.setItem('listOfScores', JSON.stringify(listOfScores));
+}
+
+function startAgain() {
+    sec = 60
+    score = 0
+    leaderboard.classList.add('hide')
+    startGame();
+}
+
+playAgain.addEventListener('click', function () {
+    startAgain()
+})
+
+function clearLeaderboard() {
+    localStorage.clear();
+    leaderBoardList.innerHTML = ""
+}
+
+clearScores.addEventListener('click', function() {
+    clearLeaderboard()
+})
+
 function showLeaderboard() {
+    initialsToAdd = userInitials.value
+    addScores(initialsToAdd, score)
     scores.classList.add('hide');
     leaderboard.classList.remove('hide');
-    playAgain.addEventListener('click', function(event) {
-        event.preventDefault();
-        startGame();
-    });
-    clearScores.addEventListener('click', function() {
-        window.localStorage.clear();
-    })
+    leaderBoardList.innerHTML = ""
+    var displayScores = JSON.parse(localStorage.getItem("listOfScores"));
+    for (i = 0; i < displayScores.length; i++) {
+        let newLeader = document.createElement("li");
+        newLeader.setAttribute("class", "listOfLeaders")
+        newLeader.append(document.createTextNode(`${displayScores[i].initials} -------------- ${displayScores[i].score}`))
+        leaderBoardList.append(newLeader)
+        }
 }
+
+leaderBoardButton.addEventListener('click', function() {
+    startButton.classList.add('hide');
+    description.classList.add('hide');
+    showLeaderboard();
+});
 
 // Create the questions and Answers in an array to reference in showQuestion.
 var questionArray = [
