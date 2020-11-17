@@ -7,15 +7,15 @@ This is a short quiz to see if you know your HTML / CSS / JavaScript basics. At 
 
 ## The Quiz Page
 
-<p align="center">
-<img src="Assets\images\code-quiz webpage.png" alt="Code Quiz">
-<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-<img src="Assets\images\question-example.jpg" alt="Question Example">
-<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-<img src="Assets\images\end-quiz-example.jpg" alt="End of Quiz">
-<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-<img src="Assets\images\Leaderboard-example.jpg" alt="Leaderboard Example">
-</p>
+<div align="center">
+    <img src="Assets\images\code-quiz webpage.png" alt="Code Quiz">
+    <p>-----------------------------------------------------------------------------</p>
+    <img src="Assets\images\question-example.jpg" alt="Question Example">
+    <p>-----------------------------------------------------------------------------</p>
+    <img src="Assets\images\end-quiz-example.jpg" alt="End of Quiz">
+    <p>-----------------------------------------------------------------------------</p>
+    <img src="Assets\images\Leaderboard-example.jpg" alt="Leaderboard Example">
+</div>
 
 <a href="https://treyjewett.github.io/Code-quiz/" target="_blank">Click here to view the Quiz!</a>
 
