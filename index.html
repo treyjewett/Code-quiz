@@ -12,8 +12,6 @@
     <div class="score-board" id="leaders">
       <div class="high-scores">
         <h1 id="high-scores">High Scores</h1>
-        <ul id="leaders">
-        </ul>
       </div>
       <div class="timer">
         <h1 id="timer">Time: </h1>
@@ -35,12 +33,18 @@
       </div>
     </div>
     <div class="score hide" id="score">
-      <div id="user-score">
-        <form action="" id="form" onsubmit="sConsole(event)">
+      <h1 id="user-score">Your Score: </h1>
+        <form action="" id="form">
           <input type="text" name="data" id="initials">
           <button id="submit">Submit</button>
         </form>
-      </div>
+    </div>
+    <div class="container hide" id="leaderboard">
+      <h1>Leaderboard</h1>
+        <ul id="leaders">
+        </ul>
+        <button class="btn" id="clear">Clear Scores</button>
+        <button class="btn" id="play-again">Play Again</button>
     </div>
   </body>
   <script src="Assets/js/script.js"></script>

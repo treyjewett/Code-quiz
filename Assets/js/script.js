@@ -1,6 +1,8 @@
 var scores = document.getElementById('score');
 var clock = document.getElementById('timer');
-var leaderboard = document.getElementById('leaders');
+var userScore = document.getElementById('user-score');
+var leaderboard = document.getElementById('leaderboard');
+var clearScores = document.getElementById('clear');
 var startButton = document.getElementById('start-btn');
 var description = document.getElementById('description');
 var questionContainerEl = document.getElementById('question-container');
@@ -8,6 +10,7 @@ var questionEl = document.getElementById('question');
 var answerButtonsEl = document.getElementById('answer-buttons');
 var submit = document.getElementById('submit');
 var userInitials = document.getElementById('initials');
+var playAgain = document.getElementById('play-again');
 var currentQuestionIndex;
 var sec = 60;
 var score = 0;
@@ -96,7 +99,6 @@ function showQuestion(currentQuestionObject) {
 }
 
 function selectAnswer(isCorrect) {
-    console.log(isCorrect);
     if (isCorrect == true) {
         score += 10;
         alert('Correct! You get 10 points!')
@@ -108,7 +110,6 @@ function selectAnswer(isCorrect) {
     if (currentQuestionIndex == shuffled.length) {
         endQuiz();
     }
-    console.log(currentQuestionIndex);
     showQuestion(shuffled[currentQuestionIndex]);
 }
 
@@ -118,24 +119,36 @@ function quizTimeout() {
 }
 
 function endQuiz() {
-    alert("The quiz is over");
+    alert('The quiz is over');
+    timer(clearInterval(timer));
     questionContainerEl.classList.add('hide');
     scores.classList.remove('hide');
-    userInitials = textInput.value();
-    var jsonInitials = JSON.stringify(userInitials);
-    var jsonScore = JSON.stringify(score);
-    localStorage.setItem({user: jsonInitials, score:jsonScore});
-    showLeaderboard();
+    userScore.textContent = 'You Scored ' + score + ' Points!';
+    submit.addEventListener('click', function() {
+        showLeaderboard();
+        // userInitials = textInput.value(text);
+        // var jsonInitials = JSON.stringify(userInitials);
+        // var jsonScore = JSON.stringify(score);
+        // localStorage.setItem({user: jsonInitials, score:jsonScore});
+    });
 }
 
 function showLeaderboard() {
-
+    scores.classList.add('hide');
+    leaderboard.classList.remove('hide');
+    playAgain.addEventListener('click', function(event) {
+        event.preventDefault();
+        startGame();
+    });
+    clearScores.addEventListener('click', function() {
+        window.localStorage.clear();
+    })
 }
 
 // Create the questions and Answers in an array to reference in showQuestion.
 var questionArray = [
     {
-        questionText: "What is the format used for storing and transporting data?",
+        questionText: 'What is the format used for storing and transporting data?',
         answers: [
             { text: 'JASON', correct: false },
             { text: 'JSON', correct: true },
@@ -143,7 +156,7 @@ var questionArray = [
             { text: 'JavaScript', correct: false }
         ],
     }, {
-        questionText: "What does 'css' stand for?",
+        questionText: 'What does "css" stand for?',
         answers: [
             { text: 'cascading style sheets', correct: true },
             { text: 'create something special', correct: false },
@@ -151,7 +164,7 @@ var questionArray = [
             { text: 'call syntax sheets', correct: false }
         ],
     }, {
-        questionText: "What is used to enclose an array?",
+        questionText: 'What is used to enclose an array?',
         answers: [
             { text: 'Nothing', correct: false },
             { text: 'Quotation Marks', correct: false },
@@ -159,7 +172,7 @@ var questionArray = [
             { text: 'Square Brackets', correct: true }
         ],
     }, {
-        questionText: "How would you check if A is equal to 2?",
+        questionText: 'How would you check if A is equal to 2?',
         answers: [
             { text: 'A ?= 2', correct: false },
             { text: 'A != 2', correct: false },
@@ -167,7 +180,7 @@ var questionArray = [
             { text: 'Is A 2?', correct: false }
         ],
     }, {
-        questionText: "How do you comment something in Javascript?",
+        questionText: 'How do you comment something out in Javascript?',
         answers: [
             { text: '<!--', correct: false },
             { text: '#', correct: false },
@@ -175,7 +188,7 @@ var questionArray = [
             { text: 'comment:', correct: false }
         ],
     }, {
-        questionText: "What is used to declare a variable in JavaScript?",
+        questionText: 'What is used to declare a variable in JavaScript?',
         answers: [
             { text: 'var =', correct: true },
             { text: 'var: ', correct: false },
@@ -183,7 +196,7 @@ var questionArray = [
             { text: 'var()', correct: false }
         ],
     }, {
-        questionText: "What is used to see if a value AND data type are the same?",
+        questionText: 'What is used to see if a value AND data type are the same?',
         answers: [
             { text: '&&', correct: false },
             { text: '/=', correct: false },
