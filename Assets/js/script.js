@@ -187,7 +187,7 @@ function showLeaderboard() {
     leaderBoardList.innerHTML = "";
     var displayScores = JSON.parse(localStorage.getItem("listOfScores"));
     for (i = 0; i < displayScores.length; i++) {
-        let newLeader = document.createElement("li");
+        var newLeader = document.createElement("li");
         newLeader.setAttribute("class", "listOfLeaders");
         newLeader.append(document.createTextNode(`${displayScores[i].initials} ----- ${displayScores[i].score}`));
         leaderBoardList.append(newLeader);
